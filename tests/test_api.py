@@ -1,9 +1,14 @@
 import requests
 import pytest
 import json
-from src.api.fetch_data import fetch_nba_data
+# from src.api.fetch_data import fetch_nba_data
 import os
 from dotenv import load_dotenv
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
+from api.fetch_data import fetch_nba_data
 
 
 load_dotenv()
@@ -38,5 +43,5 @@ def test_fetch_nba_data():
     """Test our fetch_nba_data function for expected output."""
     data = fetch_nba_data()  # Function should return JSON
     assert isinstance(data, dict)
-    assert "data" in data  # Check that the "data" key exists
-    assert isinstance(data["data"], list)  # The "data" key should contain a list of games
+    assert "response" in data  # Check that the "data" key exists
+    assert isinstance(data["response"], list)  # The "data" key should contain a list of games
