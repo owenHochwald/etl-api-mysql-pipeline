@@ -1,7 +1,6 @@
 import requests
 import pytest
 import json
-# from src.api.fetch_data import fetch_nba_data
 import os
 from dotenv import load_dotenv
 import sys
