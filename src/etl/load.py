@@ -4,14 +4,13 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 
-def get_db_connection():
+def get_db_connection(database=None):
     """Establishes and returns a MySQL database connection."""
     return mysql.connector.connect(
         host="localhost",
         user=os.getenv("USER"),
         password=os.getenv("PASSWORD"),
-        database="NBA"
-        
+        database=database if database else None   
     )
     
 def create_database():
@@ -23,22 +22,22 @@ def create_database():
 
     cursor.close()
     conn.close()
-    print(f"Database '{db_name}' created.")
+    print(f"Database NBA created.")
 
 def create_players_table():
     """Creates the 'players' table if it doesn't already exist."""
-    conn = get_db_connection()
+    conn = get_db_connection('NBA')
     cursor = conn.cursor()
 
     create_table_query = """
     CREATE TABLE IF NOT EXISTS players (
         player_id INT PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        nba_start_year INT NOT NULL,
-        height DECIMAL(4,2) NOT NULL,
-        weight DECIMAL(5,2) NOT NULL,
-        position VARCHAR(5),
-        jersey_number INT
+        nba_start_year INT NULL,
+        height DECIMAL(4,2) NULL,
+        weight DECIMAL(5,2) NULL,
+        position VARCHAR(5) NULL,
+        jersey_number INT NULL
     );
     """
     
@@ -50,7 +49,7 @@ def create_players_table():
 
 def insert_player(player):
     """Inserts a new player into the database or updates existing record."""
-    conn = get_db_connection()
+    conn = get_db_connection('NBA')
     cursor = conn.cursor()
 
     insert_query = """
@@ -79,5 +78,4 @@ def insert_player(player):
     conn.commit()
     cursor.close()
     conn.close()
-    print("Inserted player.")
 

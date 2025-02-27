@@ -1,8 +1,4 @@
-import datetime
 from src.etl.extract import extract_data
-
-
-
 
 def transform_data(raw_data):
     """Cleans and transforms NBA game data for database storage."""
@@ -32,5 +28,5 @@ def transform_data(raw_data):
     return transformed_data
 
     
-response = extract_data()
-print(transform_data(response))
+# response = extract_data()
+# print(transform_data(response))
