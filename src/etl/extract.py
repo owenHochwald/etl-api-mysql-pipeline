@@ -1,4 +1,8 @@
-from ..api.fetch_data import fetch_nba_data
+import os
+import sys
+from src.api.fetch_data import fetch_nba_data
+
+
 import requests
 
 def extract_data():
@@ -6,6 +10,4 @@ def extract_data():
     response = fetch_nba_data()
     return response.get('response')
 
-
-print(extract_data())
 

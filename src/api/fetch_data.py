@@ -22,5 +22,3 @@ def fetch_nba_data():
     response = requests.get(url, headers=headers, params=querystring)
 
     return response.json()
-
-print(fetch_nba_data())

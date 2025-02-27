@@ -1,2 +1,11 @@
 venv/
 .env
+__pychache__
+src/etl/__pycache__/extract.cpython-310.pyc
+src/__pycache__/__init__.cpython-310.pyc
+src/__pycache__/
+src/etl/__pycache__/
+tests/__pycache__/
+src/api/__pycache__/
+src/api/__pycache__/fetch_data.cpython-311.pyc
+src/api/__pycache__/fetch_data.cpython-311.pyc
